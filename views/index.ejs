@@ -1,42 +1,26 @@
-<div class="contenido_total">
-	<div class="titulo_practica">
-		<h1 align="center">
-			Proyecto Procesadores de Lenguajes
-		</h1>
-		<h2 align="center">PEGJS</h2>
-	</div>
-	<div class="contenido">
-		<table class="center" id="input">
-	 <tr><th>Introduzca la expresión a parsear</th></tr>
-	 <tr><th>Arrastre un fichero con la entrada hasta la zona de entrada</th></tr>
-	 <tr>
-		 <th>
-			 <textarea class = "drop_zone" autofocus="" cols = "80" rows = "5" id="original"></textarea>
-		 </th>
-		 <th>
-			 <button type="button" id="parse"> Parsear</button>
-		 </th>
-	 </tr>
-	 <tr>
-	 </tr>
-	 <tr>
-		 <th>
-				 Cargar archivo:
-				 <input type="file" class="inputfile" />
-		 </th>
-	 </tr>
-	 <tr>
-		 <th id="stored">
-			 <label for="Title">Introduzca el nombre del fichero: </label>
-			 <input id="Title" type="text" pattern="/^[^0-9]\w+\.csv$/"></input>
-			 <input id="save" type="submit"></input>
-		 </th>
-	 </tr>
-	 <tr>
-		 <th>
-			 <div id="buttons"></div>
-		 </th>
-	 </tr>
- </table>
-	</div>
-</div>
+    <div class="title"><h1>Analizador de PL0 Ampliado</h1></div>
+    <div class="content">
+      <div class="div-input">
+        <div class="title-input">Código</div>
+        <textarea class="drop_zone" id="original"></textarea>
+        <div class="button-panel">
+          <div class="parsear"><button type="button" id="parse">Parsear</button></div>
+          <div class="importar">Importar<div id="file-import"><input type="file" class="inputfile"></input></div></div>
+        </div>
+      </div>
+      <div class="div-output">
+        <div class="title-output-ast" onclick="show_ast()">Árbol Sintáctico</div>
+        <div class="title-output-tsym" onclick="show_semantic()">Tabla de Símbolos</div>
+        <div id="output" style="visibility:visible">
+          <pre>
+            <span id="tree"></span> <!-- Output goes here! --> 
+          </pre>
+        </div>
+        <div id="output2" style="visibility:hidden">
+          <pre>
+            <span id="symboltable"></span> <!-- Output goes here! --> 
+          </pre>
+        </div>
+      </div>
+    </div>
+

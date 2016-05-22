@@ -1,22 +1,8 @@
 (() =>{
 	"use strict";
-/**	const treeTremplate =`
-	<div class="contenido">
-	      <table class="center" id="result">
-	          <% _.each(rows, (row) => { %>
-	          <tr class="<%=row.type%>">
-	              <% _.each(row.items, (name) =>{ %>
-	              <td><%= name %></td>
-	              <% }); %>
-	          </tr>
-	          <% }); %>
-	      </table>
-	  </p>
-	</div>
-	`; */
 //	Creamos el arbol con la salida del parser
 const createTree = (data) => {
-  $("#finalTree").html(_.template(treeTemplate, { rows: data.rows }));
+  $("#tree").html(JSON.stringify(data.tree, undefined, 2)); 
 };
 
 //	Cargar un fichero en el textarea
@@ -45,19 +31,20 @@ const handleDragOver = (evt) => {
   evt.target.style.background = "yellow";
 }
 
+
 $(document).ready(() => {
-    let original = document.getElementById("original");
-    if (window.localStorage && localStorage.original) {
+  let original = document.getElementById("original");
+  if (window.localStorage && localStorage.original) {
       original.value = localStorage.original;
-    }
-   $("#parse").click( () => {
-        if (window.localStorage) localStorage.original = original.value;
-        $.get("/parser", /* Llamada a AJAX para que calcule la tabla */
-          { input: original.value },
-          createTree,
-          'json'
-        );
-   });
+  }
+  $("#parse").click( () => {
+    if (window.localStorage) localStorage.original = original.value;
+    $.get("/parser",
+      { input: original.value },
+      createTree,
+      'json'
+    );
+  });
 	 // Setup the drag and drop listeners.
 	 //var dropZone = document.getElementsByClassName('drop_zone')[0];
 	 let dropZone = $('.drop_zone')[0];
@@ -66,4 +53,4 @@ $(document).ready(() => {
 	 let inputFile = $('.inputfile')[0];
 	 inputFile.addEventListener('change', handleFileSelect, false);
  });
-});
+})();

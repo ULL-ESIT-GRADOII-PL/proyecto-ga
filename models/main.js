@@ -1,6 +1,6 @@
 (() =>{
 	"use strict";
-	var PEG = require("./parser.js");
+	var PEG = require("./parsernode.js");
 	const parser = (input) =>{
 		const tree = PEG.parse(input);
 		console.log(tree);
